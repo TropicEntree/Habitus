@@ -1,9 +1,6 @@
 import { base44 } from "@/api/base44Client";
 import moment from "moment";
 
-// Claude powers the coach (non-default model — uses more integration credits).
-const COACH_MODEL = "claude_sonnet_4_6";
-
 /**
  * Gathers the user's real progress data (last 7 days) into a compact JSON
  * string used as LLM context.
@@ -52,7 +49,6 @@ export async function gatherCoachContext() {
 export async function generateInsight() {
   const context = await gatherCoachContext();
   const res = await base44.integrations.Core.InvokeLLM({
-    model: COACH_MODEL,
     prompt:
       "Sei un coach motivazionale esperto che supporta persone con ADHD. Analizza i dati reali dell'utente (ultimi 7 giorni) e genera UN suggerimento motivazionale PROATTIVO, breve (max 2-3 frasi), personalizzato e basato sui progressi reali. Riconosci un pattern concreto (es. streak in calo, umore migliorato, abitudini trascurate, buon completamento) e usa un tono incoraggiante e non giudicante. Non inventare dati non presenti. Dati JSON:\n" +
       context,
@@ -79,7 +75,6 @@ export async function generateInsight() {
 export async function askCoach(question) {
   const context = await gatherCoachContext();
   const res = await base44.integrations.Core.InvokeLLM({
-    model: COACH_MODEL,
     prompt:
       "Sei un coach motivazionale per persone con ADHD. Rispondi in modo breve, pratico e incoraggiante, basandoti sui dati reali dell'utente. Non inventare dati non presenti.\nDati JSON:\n" +
       context +
@@ -131,7 +126,6 @@ export async function generateWeeklySummary() {
   });
 
   const res = await base44.integrations.Core.InvokeLLM({
-    model: COACH_MODEL,
     prompt:
       "Sei un coach ADHD. Genera un RIEPILOGO SETTIMANALE breve (3-4 frasi) che celebra i progressi reali dell'utente della scorsa settimana e suggerisce un focus concreto per la prossima. Tono caldo, incoraggiante, non giudicante. Non inventare dati non presenti. Dati JSON:\n" +
       context,

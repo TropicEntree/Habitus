@@ -92,6 +92,7 @@ export default function BookingDialog({ expert, open, onClose, onBooked }) {
                 <div className="flex gap-2 mb-4">
                   <input
                     type="date"
+                    min={new Date().toISOString().slice(0, 10)}
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     className="flex-1 px-3 py-2.5 rounded-xl border border-input bg-background text-foreground"

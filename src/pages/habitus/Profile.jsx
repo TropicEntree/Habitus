@@ -227,16 +227,6 @@ export default function Profile() {
         </Link>
       )}
 
-      {!isPremium && (
-        <div className="p-4 rounded-2xl bg-gradient-to-br from-sakura/30 to-lilac/30 border border-lilac/40 mb-4">
-          <p className="font-bold text-sm text-foreground mb-1">{t("premium_card_title")}</p>
-          <p className="text-xs text-muted-foreground mb-3">{t("premium_card_body")}</p>
-          <button className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-sm font-bold">
-            {t("premium_card_cta")}
-          </button>
-        </div>
-      )}
-
       <button
         onClick={() => base44.auth.logout("/login")}
         className="w-full py-3 rounded-2xl border border-border text-muted-foreground font-bold text-sm flex items-center justify-center gap-2"
