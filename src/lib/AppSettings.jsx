@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { base44 } from "@/api/base44Client";
 import { translations } from "./i18n";
+import { DEFAULT_PALETTE } from "./palettes";
 
 const Ctx = createContext(null);
 
@@ -8,7 +9,7 @@ export function AppSettingsProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [lang, setLangState] = useState("it");
   const [evening, setEvening] = useState(false);
-  const [palette, setPaletteState] = useState("sakura");
+  const [palette, setPaletteState] = useState(DEFAULT_PALETTE);
 
   useEffect(() => {
     (async () => {
@@ -18,7 +19,7 @@ export function AppSettingsProvider({ children }) {
         setProfile(p);
         setLangState(p?.language || "it");
         setEvening(!!p?.evening_mode);
-        setPaletteState(p?.bg_color || "sakura");
+        setPaletteState(p?.bg_color || DEFAULT_PALETTE);
       } catch {
         /* ignore */
       }

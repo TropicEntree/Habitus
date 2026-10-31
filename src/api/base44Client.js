@@ -206,6 +206,10 @@ const auth = {
   async resendOtp(email) {
     return unwrap(await supabase.auth.resend({ type: "signup", email }));
   },
+  // Changes only the signed-in user's display name (RPC checks auth.uid()).
+  async updateMyName(newName) {
+    return unwrap(await supabase.rpc("update_my_name", { new_name: newName }));
+  },
   // Kept for compatibility: supabase-js stores the session itself.
   setToken() {},
   async resetPasswordRequest(email) {

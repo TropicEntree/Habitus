@@ -12,6 +12,7 @@ import moment from "moment";
 import MonthCalendar from "@/components/habitus/MonthCalendar";
 import ProfileAvatar from "@/components/habitus/ProfileAvatar";
 import AccountDeletion from "@/components/profile/AccountDeletion";
+import EditableName from "@/components/profile/EditableName";
 import SheetPicker from "@/components/habitus/SheetPicker";
 
 function SettingRow({ icon: Icon, label, children }) {
@@ -111,7 +112,7 @@ export default function Profile() {
     <div className="px-5 pt-14 pb-28 min-h-screen">
       <div className="flex flex-col items-center mb-6">
         <ProfileAvatar photoUrl={profile?.photo_url} name={me?.full_name} onUpdated={ensureProfile} />
-        <h1 className="font-extrabold text-lg text-foreground mt-2">{me?.full_name || t("user")}</h1>
+        <EditableName name={me?.full_name} onSaved={(n) => setMe((m) => ({ ...m, full_name: n }))} />
         <span
           className={`text-xs font-bold px-2.5 py-1 rounded-full mt-1 ${
             isPremium ? "bg-sunset/20 text-sunset" : "bg-muted text-muted-foreground"
