@@ -17,7 +17,7 @@ export default defineConfig({
       manifest: false,
       registerType: 'autoUpdate',
       injectRegister: 'auto',
-      includeAssets: ['icons/*.png', 'icons/*.webp'],
+      includeAssets: ['icons/*.png', 'icons/*.webp', 'icons/*.svg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
       },

@@ -45,8 +45,8 @@
     --card-foreground: 210 20% 93%;
     --popover: 230 30% 16%;
     --popover-foreground: 210 20% 93%;
-    --primary: 346 80% 75%;
-    --primary-foreground: 346 60% 18%;
+    --primary: 177 43% 60%;
+    --primary-foreground: 180 45% 12%;
     --secondary: 200 45% 24%;
     --secondary-foreground: 200 60% 85%;
     --muted: 230 25% 18%;
@@ -57,7 +57,7 @@
     --destructive-foreground: 0 0% 100%;
     --border: 230 25% 24%;
     --input: 230 25% 24%;
-    --ring: 346 80% 75%;
+    --ring: 177 43% 60%;
     --sakura: 346 100% 78%;
     --sky: 195 70% 72%;
     --lilac: 265 60% 78%;
