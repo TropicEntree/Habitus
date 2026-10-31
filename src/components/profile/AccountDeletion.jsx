@@ -21,20 +21,23 @@ export default function AccountDeletion() {
     setConfirmText("");
   };
 
+  const [error, setError] = useState("");
+
+  // Store rules (Apple 5.1.1(v), Google Play User Data) require a real deletion:
+  // if it fails we must tell the user instead of logging them out silently.
   const handleDelete = async () => {
     setLoading(true);
+    setError("");
     try {
       const me = await base44.auth.me();
-      if (me?.id) {
-        await base44.entities.User.delete(me.id).catch(() => {});
-      }
+      if (!me?.id) throw new Error("no-user");
+      await base44.entities.User.delete(me.id);
       await base44.auth.logout("/login");
       window.location.href = "/login";
     } catch {
-      await base44.auth.logout("/login");
-      window.location.href = "/login";
+      setError("Eliminazione non riuscita. Riprova più tardi o contatta il supporto.");
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -108,6 +111,9 @@ export default function AccountDeletion() {
                     placeholder="ELIMINA"
                     className="w-full bg-slate-800 text-white text-sm rounded-xl px-3 py-3 border border-slate-700/30 outline-none focus:border-red-500/50 text-center font-mono uppercase tracking-widest"
                   />
+                  {error && (
+                    <p role="alert" className="text-xs text-red-400">{error}</p>
+                  )}
                 </div>
                 <div className="flex gap-2">
                   <button
