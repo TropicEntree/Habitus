@@ -1,0 +1,22 @@
+{
+  "name": "AiMessage",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "assistant",
+        "idea"
+      ],
+      "default": "user"
+    },
+    "content": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "role",
+    "content"
+  ]
+}
