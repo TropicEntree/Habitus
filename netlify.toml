@@ -1,6 +1,6 @@
 # Hosting su Netlify (piano gratuito).
-# Il frontend è statico (cartella dist). Il backend (database, login, AI)
-# resta su Base44: tutte le chiamate /api/* vengono inoltrate all'app Base44.
+# Il frontend è statico (cartella dist). Il backend (database, login, file, AI)
+# è su Supabase: il browser lo chiama direttamente, senza proxy.
 
 [build]
   command = "npm run build"
@@ -8,19 +8,13 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  # URL pubblico dell'app Base44 (non è un segreto).
-  VITE_BASE44_APP_BASE_URL = "https://stalwart-focus-flow-boost.base44.app"
-  # VITE_BASE44_APP_ID va impostato nel pannello Netlify:
-  # Site configuration > Environment variables
+  # Valori pubblici per progetto (finiscono comunque nel codice del browser):
+  # i dati sono protetti dalle regole RLS del database, non da queste chiavi.
+  # La chiave segreta (service_role) NON va mai messa qui.
+  VITE_SUPABASE_URL = "https://lmvfujfdudxeubxktbcl.supabase.co"
+  VITE_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_8Unoxvd9TL0N4kO2beM4Xg_V-PmX67j"
 
-# 1) Proxy verso il backend Base44 (deve stare PRIMA del fallback SPA)
-[[redirects]]
-  from = "/api/*"
-  to = "https://stalwart-focus-flow-boost.base44.app/api/:splat"
-  status = 200
-  force = true
-
-# 2) Fallback SPA: ogni pagina (es. /login, /profile) apre index.html
+# Fallback per la single page app (React Router)
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -40,3 +34,5 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://lmvfujfdudxeubxktbcl.supabase.co wss://lmvfujfdudxeubxktbcl.supabase.co; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"

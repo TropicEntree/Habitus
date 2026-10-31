@@ -1,10 +1,14 @@
 export const PALETTES = [
+  { id: "oceano", name: "Oceano", bg: "#F2F8F8", dark: "#142224", accent: "#6CC4C0", emoji: "🌊" },
+  { id: "tramonto", name: "Tramonto", bg: "#FFF6F0", dark: "#261b17", accent: "#F4A582", emoji: "🌅" },
   { id: "sakura", name: "Sakura", bg: "#FFF9F5", dark: "#241a22", accent: "#FFB4C6", emoji: "🌸" },
   { id: "menta", name: "Menta", bg: "#F0FAF4", dark: "#16201c", accent: "#9ED9B7", emoji: "🌿" },
   { id: "lilla", name: "Lilla", bg: "#F5F2FB", dark: "#1d1a2b", accent: "#B9A6E0", emoji: "🔮" },
   { id: "cielo", name: "Cielo", bg: "#F0F7FB", dark: "#16212a", accent: "#9BD0E6", emoji: "☁️" },
   { id: "terra", name: "Terra", bg: "#FBF1E8", dark: "#241c16", accent: "#E6B894", emoji: "🪵" },
 ];
+
+export const DEFAULT_PALETTE = "oceano";
 
 function hexToHsl(hex) {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -35,7 +39,7 @@ function hexToHsl(hex) {
 }
 
 export function paletteStyle(paletteId, isDark = false) {
-  const p = PALETTES.find((x) => x.id === paletteId) || PALETTES[0];
+  const p = PALETTES.find((x) => x.id === paletteId) || PALETTES.find((x) => x.id === DEFAULT_PALETTE);
   const bg = isDark ? p.dark : p.bg;
   return {
     "--background": hexToHsl(bg),

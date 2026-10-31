@@ -18,7 +18,7 @@ export default function AdminUsers() {
     setLoading(true);
     const [userList, profileList] = await Promise.all([
       base44.entities.User.list("-created_date", 500),
-      base44.entities.UserProfile.list(null, 500),
+      base44.entities.UserProfile.listAll(null, 500),
     ]);
     setUsers(userList);
     const byOwner = {};

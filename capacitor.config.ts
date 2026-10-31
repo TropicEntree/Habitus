@@ -7,7 +7,7 @@ const config: CapacitorConfig = {
   appId: 'com.habitus.app',
   appName: 'Habitus',
   webDir: 'dist',
-  backgroundColor: '#FFF9F5',
+  backgroundColor: '#F2F8F8',
 };
 
 export default config;
