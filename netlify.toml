@@ -8,8 +8,11 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  # VITE_SUPABASE_URL e VITE_SUPABASE_PUBLISHABLE_KEY vanno impostate nel
-  # pannello Netlify: Site configuration > Environment variables
+  # Valori pubblici per progetto (finiscono comunque nel codice del browser):
+  # i dati sono protetti dalle regole RLS del database, non da queste chiavi.
+  # La chiave segreta (service_role) NON va mai messa qui.
+  VITE_SUPABASE_URL = "https://lmvfujfdudxeubxktbcl.supabase.co"
+  VITE_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_8Unoxvd9TL0N4kO2beM4Xg_V-PmX67j"
 
 # Fallback per la single page app (React Router)
 [[redirects]]
