@@ -1,0 +1,62 @@
+{
+  "name": "Expert",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "specialty": {
+      "type": "string",
+      "enum": [
+        "adhd_coach",
+        "psychologist",
+        "psychiatrist",
+        "therapist",
+        "neurologist"
+      ],
+      "default": "adhd_coach"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number",
+      "default": 40
+    },
+    "rating": {
+      "type": "number",
+      "default": 5
+    },
+    "reviews": {
+      "type": "number",
+      "default": 0
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "it",
+        "en",
+        "ko"
+      ],
+      "default": "it"
+    },
+    "online_available": {
+      "type": "boolean",
+      "default": true
+    },
+    "available": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "name",
+    "specialty"
+  ]
+}

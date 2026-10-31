@@ -1,0 +1,42 @@
+{
+  "name": "Booking",
+  "type": "object",
+  "properties": {
+    "expert_id": {
+      "type": "string"
+    },
+    "expert_name": {
+      "type": "string"
+    },
+    "session_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "video",
+        "audio"
+      ],
+      "default": "video"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed",
+        "completed",
+        "cancelled"
+      ],
+      "default": "pending"
+    },
+    "price": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "expert_id",
+    "session_date"
+  ]
+}

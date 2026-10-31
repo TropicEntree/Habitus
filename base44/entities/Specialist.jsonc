@@ -1,0 +1,58 @@
+{
+  "name": "Specialist",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "specialty": {
+      "type": "string",
+      "enum": [
+        "psychiatrist",
+        "psychologist",
+        "neurologist",
+        "adhd_coach",
+        "therapist"
+      ]
+    },
+    "bio": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "availability": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "number"
+    },
+    "specializations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "location": {
+      "type": "string"
+    },
+    "online_available": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "name",
+    "specialty"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "The role of the user in the app",
+      "enum": [
+        "admin",
+        "user"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "Account status; suspended users are blocked from using the app",
+      "enum": [
+        "active",
+        "suspended"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "role"
+  ],
+  "name": "User",
+  "type": "object"
+}
